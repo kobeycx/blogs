@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e # halt script on error
+
+echo "copy install"
+bundle exec htmlproofer ../_site
+echo "copy finish"

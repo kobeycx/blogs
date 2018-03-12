@@ -1,0 +1,14 @@
+baseurl: ""
+
+exclude:
+  - vendor
+  - less
+  - node_modules
+  - Gruntfile.js
+  - package.json
+  - README.md
+
+sass:
+  load_paths:
+    - _sass
+    - node_modules

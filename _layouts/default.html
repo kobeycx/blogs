@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./assets/main.css">
+
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    <script src="{{'/assets/vendor/jquery.min.js' | absolute_url}}"></script>
+    <script src="{{'/assets/vendor/popper.min.js' | absolute_url}}"></script>
+    <script src="{{'/assets/vendor/bootstrap.min.js' | absolute_url}}"></script>
+
+      {% include nav.html %}
+      <div class="main">
+        {{ content }}
+      </div>
+    </div>
+  </body>
+</html>
