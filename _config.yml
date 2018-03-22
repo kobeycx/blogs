@@ -2,10 +2,9 @@ baseurl: ""
 
 exclude:
   - vendor
-  - less
   - node_modules
+  - less
   - Gruntfile.js
-  - package.json
   - README.md
 
 sass:
