@@ -34,3 +34,6 @@ _site
 vendor
 yarn.lock
 Gemfile.lock
+
+!node_modules/
+!assets/vendor/
