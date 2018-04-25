@@ -32,13 +32,13 @@
     </p>
     <hr>
 
-    <h3>RunLoop 与线程的关系</h3>
+    <h3 id="thread">RunLoop 与线程的关系</h3>
     <p>首先，iOS 开发中能遇到两个线程对象: pthread_t 和 NSThread。过去苹果有份文档标明了 NSThread 只是 pthread_t 的封装，但那份文档已经失效了，现在它们也有可能都是直接包装自最底层的 mach thread。苹果并没有提供这两个对象相互转换的接口，但不管怎么样，可以肯定的是 pthread_t 和 NSThread 是一一对应的。比如，你可以通过 pthread_main_thread_np() 或 [NSThread mainThread] 来获取主线程；也可以通过 pthread_self() 或 [NSThread currentThread] 来获取当前线程。CFRunLoop 是基于 pthread 来管理的。</p>
     <p>苹果不允许直接创建 RunLoop，它只提供了两个自动获取的函数：<strong>CFRunLoopGetMain()</strong> 和 <strong>CFRunLoopGetCurrent()</strong>。</p>
     <p>线程和 RunLoop 之间是一一对应的，其关系是保存在一个全局的 Dictionary 里。线程刚创建时并没有 RunLoop，如果你不主动获取，那它一直都不会有。RunLoop 的创建是发生在第一次获取时，RunLoop 的销毁是发生在线程结束时。你只能在一个线程的内部获取其 RunLoop（主线程除外）。</p>
     <hr>
 
-    <h3>RunLoop 对外的接口</h3>
+    <h3 id="api">RunLoop 对外的接口</h3>
     <p>在 CoreFoundation 里面关于 RunLoop 有5个类:</p>
     <p>CFRunLoopRef</p>
     <p>CFRunLoopModeRef</p>
@@ -56,8 +56,8 @@
     </p>
     <p><strong>CFRunLoopTimerRef</strong> 是基于时间的触发器，它和 NSTimer 是toll-free bridged 的，可以混用。其包含一个时间长度和一个回调（函数指针）。当其加入到 RunLoop 时，RunLoop会注册对应的时间点，当时间点到时，RunLoop会被唤醒以执行那个回调。</p>
     <p><strong>CFRunLoopObserverRef</strong> 是观察者，每个 Observer 都包含了一个回调（函数指针），当 RunLoop 的状态发生变化时，观察者就能通过回调接受到这个变化。可以观测的时间点有以下几个：</p>
-    <div class="card">
-      <div class="card-body code-block">
+    <div class="card code-block">
+      <div class="card-body">
         <span class="item text-muted">kCFRunLoopEntry (即将进入Loop)</span>
         <span class="item text-muted">kCFRunLoopBeforeTimers (即将处理 Timer)</span>
         <span class="item text-muted">kCFRunLoopBeforeSources (即将处理 Source)</span>
@@ -71,6 +71,8 @@
   <div class="col-md-4">
     <ul>
       <li><a href="#base">RunLoop 的概念</a></li>
+      <li><a href="#thread">RunLoop 对外的接口</a></li>
+      <li><a href="#api">RunLoop 的概念</a></li>
     </ul>
   </div>
 </div>
