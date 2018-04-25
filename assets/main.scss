@@ -58,3 +58,13 @@ html {
     }
   }
 }
+
+.card {
+  margin: 10px 0;
+
+  .code-block {
+    .item {
+      display: inherit;
+    }
+  }
+}
