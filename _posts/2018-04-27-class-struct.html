@@ -1,0 +1,45 @@
+---
+  layout: default
+  title: Swift 的 class 和 struct
+---
+
+<div class="row">
+  <div class="col-md-8" style="border-right:1px solid rgba(0, 0, 0, 0.1);">
+    <h2>{{ page.title }}</h2>
+    <hr>
+    <h3 id="base">概述</h3>
+    <p>
+      Swift 语言有两种基本的数据类型，即类(class)和结构体(struct). 在其它有 struct 的语言中，struct 一般只拿来组织逻辑相关的数据.
+      但在 Swift 中, struct 除此之外, 还拥有 init, method, 除了无法被继承外, 和 class 的使用方法几乎一样. 在实际使用中, 在不需要继承的情况下, 应该使用哪种?
+    </p>
+    <h3 id="thread">区别</h3>
+    <ul>
+      <li>
+        <strong>struct</strong> 值引用, 不能继承.
+      </li>
+      <li>
+        <strong>class</strong> 内存引用, 可以继承.
+      </li>
+    </ul>
+    <p>我们可以通过下面的例子来理解:</p>
+    <p><img src="{{ "/assets/images/struct01.png" | absolute_url }}" width="40%" /></p>
+    <p>为什么会出现这种情况呢? 因为对于两者，处理的方式是不一样的.</p>
+    <p><strong>class</strong> 为 引用类型, 也就是说, aClass 和 bClass 指向的是同一块内存区域</p>
+    <p><img src="{{ "/assets/images/struct02.png" | absolute_url }}" width="50%" /></p>
+
+    <p>如果声明一个 <strong>class</strong> 为常量, 那么就意味着该常量的引用不能改变（即不能被同类型变量赋值, 但指向的内存中所存储的变量是可以改变的</p>
+    <p><img src="{{ "/assets/images/struct05.png" | absolute_url }}" width="40%" /></p>
+
+    <p><strong>struct</strong> 为 值类型, 也就是说, 每个实例都单独持有一份内存区域</p>
+    <p><img src="{{ "/assets/images/struct03.png" | absolute_url }}" width="40%" /></p>
+
+    <p>如果声明一个 <strong>struct</strong> 为常量, 那就意味该常量是不可变的(无论内部数据为 var 或 let)</p>
+    <p><img src="{{ "/assets/images/struct04.png" | absolute_url }}" width="40%" /></p>
+  </div>
+  <div class="col-md-4">
+    <ul>
+      <li><a href="#base">概述</a></li>
+      <li><a href="#thread">区别</a></li>
+    </ul>
+  </div>
+</div>
